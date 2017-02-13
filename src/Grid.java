@@ -6,11 +6,11 @@ public class Grid {
     public Grid(int x, int y) {
         this.x = x;
         this.y = y;
-        this.things = new Creature[x][y];
+        this.things = new Creature[y][x];
     }
 
     public void remove(Creature creature) {
-        this.things[creature.getX()][creature.getY()] = null;
+        this.things[creature.getY()][creature.getX()] = null;
     }
 
     @Override
@@ -19,9 +19,9 @@ public class Grid {
         for (Creature[] row : things) {
             for (Creature creature : row) {
                 if (creature == null) {
-                    stringBuilder.append('O');
+                    stringBuilder.append('-');
                 } else {
-                    stringBuilder.append('*');
+                    stringBuilder.append('1');
                 }
             }
             stringBuilder.append('\n');
@@ -35,10 +35,11 @@ public class Grid {
                 creature.getX() >= (0) &&
                 creature.getY() < (y) &&
                 creature.getY() >= (0) &&
-                things[creature.getX()][creature.getY()] == null
+                things[creature.getY()][creature.getX()] == null
                 ) {
-            things[creature.getX()][creature.getY()] = creature;
+            things[creature.getY()][creature.getX()] = creature;
             new Thread(creature).start();
         }
     }
+
 }
