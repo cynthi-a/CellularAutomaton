@@ -1,23 +1,23 @@
 public class Grid {
     private final int x;
     private final int y;
-    private final Creature[][] things;
+    private final AbstractCreature[][] things;
 
     public Grid(int x, int y) {
         this.x = x;
         this.y = y;
-        this.things = new Creature[y][x];
+        this.things = new AbstractCreature[y][x];
     }
 
-    public void remove(Creature creature) {
+    public void remove(AbstractCreature creature) {
         this.things[creature.getY()][creature.getX()] = null;
     }
 
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
-        for (Creature[] row : things) {
-            for (Creature creature : row) {
+        for (AbstractCreature[] row : things) {
+            for (AbstractCreature creature : row) {
                 if (creature == null) {
                     stringBuilder.append('-');
                 } else {
@@ -29,7 +29,8 @@ public class Grid {
         return stringBuilder.toString();
     }
 
-    public void addCreature(Creature creature) {
+    public void addCreature(AbstractCreature creature) {
+        //System.err.println("" + creature.getY() + " " + creature.getY());
         if(
                 creature.getX() < (x) &&
                 creature.getX() >= (0) &&
