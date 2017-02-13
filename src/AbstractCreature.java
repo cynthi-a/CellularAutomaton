@@ -2,6 +2,7 @@ import java.util.Random;
 
 public abstract class AbstractCreature implements Runnable {
 	Grid grid;
+	char identifier;
     Random rand = new Random();
     int x;
     int y;
@@ -27,6 +28,10 @@ public abstract class AbstractCreature implements Runnable {
         else return false;
     }
 
+    public char getIdentifier() {
+    	return identifier;
+    }
+    
     public abstract void run();
 
 }

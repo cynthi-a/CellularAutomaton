@@ -21,7 +21,7 @@ public class Grid {
                 if (creature == null) {
                     stringBuilder.append('-');
                 } else {
-                    stringBuilder.append('1');
+                    stringBuilder.append(creature.getIdentifier());
                 }
             }
             stringBuilder.append('\n');

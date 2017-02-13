@@ -7,7 +7,8 @@ public class Main {
 
         Grid grid = new Grid(10, 10);
 
-        AbstractCreature creature1 = new Creature1(grid, 5, 5);
+        new Creature1(grid, 7,7);
+        new Creature2(grid, 3,3);
 
         while (true) {
             System.out.println(grid);

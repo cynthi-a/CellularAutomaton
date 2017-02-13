@@ -1,8 +1,7 @@
-import java.util.Random;
-
 public class Creature1 extends AbstractCreature {
 
     public Creature1(Grid grid, int x, int y) {
+    	this.identifier = '1';
         this.FITNESS = 0.8;
         this.MAX_LIFESPAN = 10000;
         this.grid = grid;
@@ -47,5 +46,4 @@ public class Creature1 extends AbstractCreature {
             }       
         }
     }
-
 }
