@@ -1,5 +1,3 @@
-package com.company;
-
 public class Creature implements Runnable {
     private Grid grid;
     private final int x;
