@@ -31,7 +31,7 @@ public class Grid {
 
     public void addCreature(AbstractCreature creature) {
         //System.err.println("" + creature.getY() + " " + creature.getY());
-        if(
+        if (
                 creature.getX() < (x) &&
                 creature.getX() >= (0) &&
                 creature.getY() < (y) &&
@@ -41,6 +41,18 @@ public class Grid {
             things[creature.getY()][creature.getX()] = creature;
             new Thread(creature).start();
         }
+        else if (
+                creature.getX() < (x) &&
+                creature.getX() >= (0) &&
+                creature.getY() < (y) &&
+                creature.getY() >= (0) &&
+                things[creature.getY()][creature.getX()] != null
+            ) {
+            AbstractCreature other = things[creature.getY()][creature.getX()];
+            if (Math.random() <= creature.getFitness() - other.getFitness()) {
+                this.remove(other);
+                this.addCreature(creature);
+            }
+        }
     }
-
 }
