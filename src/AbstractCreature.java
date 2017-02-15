@@ -19,42 +19,6 @@ public abstract class AbstractCreature implements Runnable {
         return y;
     }
 
-/*    @Override
-    public void run() {
-        try {
-            Thread.sleep(lifespan);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        synchronized (grid) {
-            grid.remove(this);
-            if (babyYayOrNay()) {
-                grid.addCreature(new Creature1(grid, x+1, y));
-            }
-            if (babyYayOrNay()) {
-                grid.addCreature(new Creature1(grid, x-1, y+1));
-            }
-            if (babyYayOrNay()) {
-                grid.addCreature(new Creature1(grid, x+1, y+1));
-            }
-            if (babyYayOrNay()) {
-                grid.addCreature(new Creature1(grid, x, y+1));
-            }
-            if (babyYayOrNay()) {
-                grid.addCreature(new Creature1(grid, x-1, y));
-            }    
-            if (babyYayOrNay()) {
-                grid.addCreature(new Creature1(grid, x+1, y-1));    
-            }
-            if (babyYayOrNay()) {
-                grid.addCreature(new Creature1(grid, x-1, y-1));    
-            }    
-            if (babyYayOrNay()) {
-                 grid.addCreature(new Creature1(grid, x, y-1));   
-            }       
-        }
-    }*/
-
     public boolean babyYayOrNay() {
         double d = rand.nextDouble() * 1;
 
