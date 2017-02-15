@@ -10,7 +10,9 @@ public class Grid {
     }
 
     public void remove(AbstractCreature creature) {
-        this.things[creature.getY()][creature.getX()] = null;
+            int newX = Math.abs(creature.getX() % this.x);
+            int newY = Math.abs(creature.getY() % this.y);
+        this.things[newY][newX] = null;
     }
 
     @Override
@@ -31,24 +33,14 @@ public class Grid {
 
     public void addCreature(AbstractCreature creature) {
         //System.err.println("" + creature.getY() + " " + creature.getY());
-        if (
-                creature.getX() < (x) &&
-                creature.getX() >= (0) &&
-                creature.getY() < (y) &&
-                creature.getY() >= (0) &&
-                things[creature.getY()][creature.getX()] == null
-                ) {
-            things[creature.getY()][creature.getX()] = creature;
+            int newX = (((creature.getX() % this.x) + this.x) % this.x);
+            int newY = (((creature.getY() % this.y) + this.y) % this.y);
+        if (things[newY][newX] == null) {
+            things[newY][newX] = creature;
             new Thread(creature).start();
         }
-        else if (
-                creature.getX() < (x) &&
-                creature.getX() >= (0) &&
-                creature.getY() < (y) &&
-                creature.getY() >= (0) &&
-                things[creature.getY()][creature.getX()] != null
-            ) {
-            AbstractCreature other = things[creature.getY()][creature.getX()];
+        else if (things[newY][newX] != null) {
+            AbstractCreature other = things[newY][newX];
             if (Math.random() <= creature.getFitness() - other.getFitness()) {
                 this.remove(other);
                 this.addCreature(creature);
