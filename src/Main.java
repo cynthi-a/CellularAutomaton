@@ -8,16 +8,16 @@ public class Main {
 
         // setWrappingBoolean();
 
-        Grid grid = new Grid(setWrappingBoolean(), 20, 20);
+        Grid grid = new Grid(setWrappingBoolean(), 15, 20);
 
         new Creature1(grid, 0,0);
-        new Creature2(grid, 19,19);
+        new Creature2(grid, 13,19);
         new Creature2(grid, 10,10);
 
         while (true) {
             System.out.println(grid);
             try {
-                Thread.sleep(5000);
+                Thread.sleep(500);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

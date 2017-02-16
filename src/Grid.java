@@ -23,9 +23,9 @@ public class Grid {
         for (AbstractCreature[] row : things) {
             for (AbstractCreature creature : row) {
                 if (creature == null) {
-                    stringBuilder.append('-');
+                    stringBuilder.append('-' + " ");
                 } else {
-                    stringBuilder.append(creature.getIdentifier());
+                    stringBuilder.append(creature.getIdentifier() + " ");
                 }
             }
             stringBuilder.append('\n');
@@ -45,15 +45,22 @@ public class Grid {
     private void wrappingOn(AbstractCreature creature) {
         int newX = (((creature.getX() % this.x) + this.x) % this.x);
         int newY = (((creature.getY() % this.y) + this.y) % this.y);
+
+        creature.setX(newX);
+        creature.setY(newY);
+
         if (things[newY][newX] == null) {               
             things[newY][newX] = creature;
             new Thread(creature).start();
         }
         else if ((things[newY][newX] != null) &&
             (things[newY][newX].getIdentifier() != creature.getIdentifier())) {
+
             AbstractCreature other = things[newY][newX];
             if (Math.random() <= creature.getFitness() - other.getFitness()) {
+
                 this.remove(other);
+                other.setAlive(false);
                 this.addCreature(creature);
             }
         }
@@ -83,6 +90,7 @@ public class Grid {
                 (other.getIdentifier() != creature.getIdentifier())) {
 
                 this.remove(other);
+                other.setAlive(false);
                 this.addCreature(creature);
             }
         }

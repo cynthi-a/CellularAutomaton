@@ -1,6 +1,7 @@
 public class Creature1 extends AbstractCreature {
 
     public Creature1(Grid grid, int x, int y) {
+        this.isAlive = true;
     	this.identifier = '1';
         this.FITNESS = 0.8;
         this.MAX_LIFESPAN = 10000;
@@ -20,29 +21,31 @@ public class Creature1 extends AbstractCreature {
         }
         synchronized (grid) {
             grid.remove(this);
-            if (babyYayOrNay()) {
-                grid.addCreature(new Creature1(grid, x+1, y));
-            }
-            if (babyYayOrNay()) {
-                grid.addCreature(new Creature1(grid, x-1, y+1));
-            }
-            if (babyYayOrNay()) {
-                grid.addCreature(new Creature1(grid, x+1, y+1));
-            }
-            if (babyYayOrNay()) {
-                grid.addCreature(new Creature1(grid, x, y+1));
-            }
-            if (babyYayOrNay()) {
-                grid.addCreature(new Creature1(grid, x-1, y));
-            }    
-            if (babyYayOrNay()) {
-                grid.addCreature(new Creature1(grid, x+1, y-1));    
-            }
-            if (babyYayOrNay()) {
-                grid.addCreature(new Creature1(grid, x-1, y-1));    
-            }    
-            if (babyYayOrNay()) {
-                 grid.addCreature(new Creature1(grid, x, y-1));   
+            if (isAlive) {
+                if (babyYayOrNay()) {
+                    grid.addCreature(new Creature1(grid, x+1, y));
+                }
+                if (babyYayOrNay()) {
+                    grid.addCreature(new Creature1(grid, x-1, y+1));
+                }
+                if (babyYayOrNay()) {
+                    grid.addCreature(new Creature1(grid, x+1, y+1));
+                }
+                if (babyYayOrNay()) {
+                    grid.addCreature(new Creature1(grid, x, y+1));
+                }
+                if (babyYayOrNay()) {
+                    grid.addCreature(new Creature1(grid, x-1, y));
+                }    
+                if (babyYayOrNay()) {
+                    grid.addCreature(new Creature1(grid, x+1, y-1));    
+                }
+                if (babyYayOrNay()) {
+                    grid.addCreature(new Creature1(grid, x-1, y-1));    
+                }    
+                if (babyYayOrNay()) {
+                     grid.addCreature(new Creature1(grid, x, y-1));   
+                }
             }       
         }
     }
