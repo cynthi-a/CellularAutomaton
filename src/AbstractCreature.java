@@ -1,7 +1,11 @@
+/*  Abstract class from which Creature1 and Creature2 inherit. */
+
 import java.util.Random;
 
 public abstract class AbstractCreature implements Runnable {
+    // each creature is passed the same Grid object
 	Grid grid;
+    // identifier that is needed to tell the creatures apart
 	char identifier;
     Random rand = new Random();
     int x;
@@ -9,8 +13,10 @@ public abstract class AbstractCreature implements Runnable {
     int lifespan;
 	double FITNESS;
     int MAX_LIFESPAN;
+    // this boolean will act as a flag in the Creature.run() method
     boolean isAlive;
 
+    // Accessor methods
     public int getX() {
         return x;
     }
@@ -19,31 +25,17 @@ public abstract class AbstractCreature implements Runnable {
         return y;
     }
 
-    public boolean babyYayOrNay() {
-        double d = rand.nextDouble() * 1;
-
-        if (d < FITNESS) {
-            return true;
-        }
-        else return false;
-    }
-
     public char getIdentifier() {
-    	return identifier;
+        return identifier;
     }
-    
-    public abstract void run();
 
     public double getFitness() {
         return FITNESS;
-    }
+    } 
 
-    public boolean isAlive() {
-        return isAlive;
-    }
-
-    public void setAlive(boolean aliveOrNot) {
-        isAlive = aliveOrNot;
+    // Mutator methods
+    public void kill() {
+        isAlive = false;
     }
 
     public void setY(int y) {
@@ -53,4 +45,17 @@ public abstract class AbstractCreature implements Runnable {
     public void setX(int x) {
         this.x = x;
     }
+
+    // method to determines whether the creature
+    // reproduces or not based on its fitness
+    public boolean reproduces() {
+        double d = rand.nextDouble() * 1;
+
+        if (d < FITNESS) {
+            return true;
+        }
+        else return false;
+    }
+    
+    public abstract void run();
 }
