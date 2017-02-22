@@ -24,8 +24,8 @@ public class Creature1 extends AbstractCreature {
     @Override
     public void run() {
         try {
-            // Creature1 remains on the grid as long as
-            // its lifespan is
+            // Creature1 remains on the grid for as long as
+            // its lifespan
             Thread.sleep(lifespan);
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -61,6 +61,9 @@ public class Creature1 extends AbstractCreature {
                 }    
                 if (reproduces()) {
                     grid.addCreature(new Creature1(grid, x, y-1));   
+                }
+                if (reproduces()) {
+                	grid.addCreature(new Creature1(grid, x, y));
                 }
 
                 // after Creature1 remained on the grid for the

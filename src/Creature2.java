@@ -50,6 +50,9 @@ public class Creature2 extends AbstractCreature {
                 if (reproduces()) {
                     grid.addCreature(new Creature2(grid, x, y-1));   
                 }
+                if (reproduces()) {
+                	grid.addCreature(new Creature2(grid, x, y));
+                }
 
                 // after Creature1 remained on the grid for the
                 // length of its lifetime it is removed from the grid
